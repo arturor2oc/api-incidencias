@@ -2,7 +2,7 @@ import app from './app.js';
 import mongoose from 'mongoose';
 
 // Define el puerto en el que la aplicación estará escuchando.
-const PORT = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // URL de la base de datos MongoDB a la que se conectará la aplicación.
 const urlMongoDb = "mongodb+srv://admin:AZ2Thvvr3eb.RLB@api-incidencias.we67t1n.mongodb.net/incidenciasdb";
