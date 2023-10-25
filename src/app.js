@@ -1,8 +1,12 @@
 import express from 'express';
+import cors from 'cors';
 import incidentRoute from './routes/incident.route.js';
 
 // Crea una instancia de la aplicación Express.
 const app = express();
+
+// Cors
+app.use(cors());
 
 // Agrega middleware para analizar datos JSON en las solicitudes.
 app.use(express.json());
