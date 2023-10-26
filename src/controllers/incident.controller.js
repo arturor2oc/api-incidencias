@@ -44,9 +44,9 @@ export const getIncidentsBySeverity = async (req, res) => {
         // Intenta obtener una lista de incidencias filtradas por la severidad proporcionada y ordenadas por la fecha de creación en orden ascendente.
         const incidents = await Incident.find({ severity: severity }).sort({ create_at: 1 });
 
-        // Si no se encuentran incidencias con la severidad proporcionada, responde con un código de estado 404 y un mensaje descriptivo.
+        // Si no se encuentran incidencias con la severidad proporcionada, responde con un código de estado 204 y un mensaje descriptivo.
         if (incidents.length === 0) {
-            return res.status(404).json({ msg: 'No se encontraron incidencias con la severidad proporcionada.' });
+            return res.status(204).json({ msg: 'No se encontraron incidencias con la severidad proporcionada.' });
         }
 
         // Si se encontraron incidencias, responde con un código de estado 200 y la lista de incidencias filtradas en formato JSON.
@@ -77,9 +77,9 @@ export const getIncidentsByState = async (req, res) => {
         // Intenta obtener una lista de incidencias filtradas por el estado de completado proporcionado y ordenadas por la fecha de creación en orden ascendente.
         const incidents = await Incident.find({ completed: completed }).sort({ create_at: 1 });
 
-        // Si no se encuentran incidencias con el estado de completado proporcionado, responde con un código de estado 404 y un mensaje indicando que no se encontraron incidencias con el valor proporcionado.
+        // Si no se encuentran incidencias con el estado de completado proporcionado, responde con un código de estado 204 y un mensaje indicando que no se encontraron incidencias con el valor proporcionado.
         if (incidents.length === 0) {
-            return res.status(404).json({ msg: 'No se encontraron incidencias completadas con el valor proporcionado.' });
+            return res.status(204).json({ msg: 'No se encontraron incidencias completadas con el valor proporcionado.' });
         }
 
         // Si se encontraron incidencias, responde con un código de estado 200 y la lista de incidencias filtradas en formato JSON.
