@@ -141,15 +141,15 @@ export const createIncident = async (req, res) => {
 export const updateIncident = async (req, res) => {
     try {
         // Obtiene el campo 'id' y los datos actualizados de la incidencia del cuerpo de la solicitud.
-        const { id, ...updatedData } = req.body;
+        const { _id, ...updatedData } = req.body;
 
         // Comprueba si el campo 'id' está presente en la solicitud. Si no lo está, responde con un código de estado 400 y un mensaje que indica que el campo 'id' es requerido.
-        if (!id) {
+        if (!_id) {
             return res.status(400).json({ msg: 'El campo "id" es requerido.' });
         }
 
         // Intenta actualizar la incidencia en la base de datos utilizando el 'id' proporcionado y los datos actualizados.
-        const incident = await Incident.findByIdAndUpdate(id, updatedData);
+        const incident = await Incident.findByIdAndUpdate(_id, updatedData);
 
         // Si no se encuentra la incidencia a actualizar, responde con un código de estado 404 y un mensaje que indica que no se encontró la incidencia.
         if (!incident) {
@@ -174,15 +174,15 @@ export const updateIncident = async (req, res) => {
 export const deleteIncident = async (req, res) => {
     try {
         // Obtiene el campo 'id' del cuerpo de la solicitud.
-        const { id } = req.body;
+        const { _id } = req.body;
 
         // Comprueba si el campo 'id' está presente en la solicitud. Si falta, responde con un código de estado 400 y un mensaje que indica que el campo 'id' es requerido.
-        if (!id) {
+        if (!_id) {
             return res.status(400).json({ msg: 'El campo "id" es requerido.' });
         }
 
         // Intenta eliminar la incidencia en la base de datos utilizando el 'id' proporcionado.
-        const incident = await Incident.findByIdAndDelete(id);
+        const incident = await Incident.findByIdAndDelete(_id);
 
         // Si no se encuentra la incidencia a eliminar (por ejemplo, si el 'id' no coincide con ninguna incidencia existente), responde con un código de estado 404 y un mensaje que indica que no se encontró la incidencia.
         if (!incident) {
